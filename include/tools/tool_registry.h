@@ -17,7 +17,9 @@
 
 #include <cstddef>
 #include <functional>
+#include <list>
 #include <memory>
+#include <string>
 #include <string_view>
 #include <vector>
 
@@ -66,8 +68,22 @@ public:
     static std::size_t hash(std::string_view key) noexcept;
 
 private:
-    // ===== YOUR REPRESENTATION GOES HERE =====
-    // Your buckets, your element count, and any private helpers you want
-    // (for example a rehash function). Store std::unique_ptr<Tool> in the
-    // buckets so that pointers handed out by find() survive a resize.
+    // Separate chaining: each bucket is a linked list of entries.
+    // The name is stored next to the tool so a lookup compares strings
+    // without calling the virtual name() on every entry.
+    struct Entry {
+        std::string           name;
+        std::unique_ptr<Tool> tool;
+    };
+
+    static constexpr std::size_t kInitialBuckets = 8;   // a power of two
+
+    // Bucket for `key` in a table of `count` buckets (count is a power of two).
+    static std::size_t index_for(std::string_view key, std::size_t count) noexcept;
+
+    // Moves every entry into a new table of `new_count` buckets.
+    void rehash(std::size_t new_count);
+
+    std::vector<std::list<Entry>> buckets_;
+    std::size_t                   size_ = 0;
 };
