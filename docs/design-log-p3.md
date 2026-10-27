@@ -1,6 +1,6 @@
 # Project 3 Design Log
 **Author:** Diego Mejia · **P2 code used:** my own
-**Tools used:** Claude Code (AI assistant) for help with implementation, testing and writing; Docker for Linux builds.
+**Tools used:** Claude Code (AI assistant) for help with implementation and testing; Docker for Linux builds.
 
 ## 1. Hash table
 
