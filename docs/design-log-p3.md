@@ -1,6 +1,6 @@
 # Project 3 Design Log
 **Author:** Diego Mejia · **P2 code used:** my own
-**Tools used:** Claude Code (AI assistant) to help draft and review the code, tests, and this log; Docker (Ubuntu 24.04, GCC and Clang) to build and test on Linux with ASan + UBSan.
+**Tools used:** Claude Code (AI assistant) for help with implementation, testing and writing; Docker for Linux builds.
 
 ## 1. Hash table
 
